@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Fullcalendar :options="calendarPlugins" :header="headerToolbar" />
+    <Fullcalendar :plugins="calendarPlugins" :header="header" />
   </div>
 </template>
 
@@ -17,16 +17,16 @@ export default {
   name: "Agenda",
   data() {
     return {
-      calendarPlugins: {
-        plugins: [DayGridPlugin, TimeGridPlugin, InteractionPlugin, ListPlugin],
-        initialView: "dayGridMonth",
-        headerToolbar: {
-          start: "dayGridMonth timeGridWeek timeGridDay listWeek",
-          center: "title",
-          end: "prev today next",
-        },
-        selectable: true,
-        events: [],
+      calendarPlugins: [
+        DayGridPlugin,
+        TimeGridPlugin,
+        InteractionPlugin,
+        ListPlugin,
+      ],
+      header: {
+        left: "dayGridMonth timeGridWeek timeGridDay listWeek",
+        center: "title",
+        right: "prev today next",
       },
     };
   },
@@ -34,6 +34,7 @@ export default {
   computed: {
     ...mapGetters("EVENTS"),
   },
+  methods: {},
 };
 </script>
 
