@@ -8,11 +8,11 @@ export default new Vuex.Store({
     events: []
   },
   getters: {
-    EVENTS: state => state.events
+    events: state => state.events
   },
   mutations: {
-    ADD_EVENT: (state, event) => {
-      state.events.push(event)
+    addEvents: (state, event) => {
+      return state.events.push(event)
     }
   },
   actions: {},

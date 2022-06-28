@@ -5,6 +5,7 @@
       :header="headerToolbar"
       :events="events"
     />
+    <Modal />
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import InteractionPlugin from "@fullcalendar/interaction";
 import ListPlugin from "@fullcalendar/list";
 
 import { mapGetters } from "vuex";
+import EventModal from "./EventModal.vue";
 
 export default {
   name: "Agenda",
@@ -31,25 +33,33 @@ export default {
         },
         selectable: true,
         selectMirror: true,
-        events: "EVENTS",
+        // events: "events",
         dateClick: this.handleDateClick,
+        eventClick: this.handleClick,
       },
     };
   },
   components: { Fullcalendar },
   computed: {
-    ...mapGetters(["EVENTS"]),
+    ...mapGetters(["events"]),
   },
   methods: {
     handleDateClick(arg) {
       console.log(arg);
-      this.$store.commit("ADD_EVENT", {
+      this.$store.commit("addEvents", {
+        id: (new Date().getTime()),
         title: "Something",
-        start: arg.start,
-        end: arg.end,
+        start: arg.dateStr,
+        // end: arg.endStr,
         allDay: arg.allDay,
-      });
+      })
     },
+    handleClick() {
+        this.$modal.show(EventModal,{
+            text: "This is from the component",
+            event: arg.event
+        })
+    }
   },
 };
 </script>
