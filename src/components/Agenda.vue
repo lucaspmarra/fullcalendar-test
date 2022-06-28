@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Fullcalendar :plugins="calendarPlugins" :header="header" />
+    <Fullcalendar
+      :options="calendarPlugins"
+      :header="headerToolbar"
+      :events="events"
+    />
   </div>
 </template>
 
@@ -17,24 +21,36 @@ export default {
   name: "Agenda",
   data() {
     return {
-      calendarPlugins: [
-        DayGridPlugin,
-        TimeGridPlugin,
-        InteractionPlugin,
-        ListPlugin,
-      ],
-      header: {
-        left: "dayGridMonth timeGridWeek timeGridDay listWeek",
-        center: "title",
-        right: "prev today next",
+      calendarPlugins: {
+        plugins: [DayGridPlugin, TimeGridPlugin, InteractionPlugin, ListPlugin],
+        initialView: "dayGridMonth",
+        headerToolbar: {
+          start: "dayGridMonth timeGridWeek timeGridDay listWeek",
+          center: "title",
+          end: "prev today next",
+        },
+        selectable: true,
+        selectMirror: true,
+        events: "EVENTS",
+        dateClick: this.handleDateClick,
       },
     };
   },
   components: { Fullcalendar },
   computed: {
-    ...mapGetters("EVENTS"),
+    ...mapGetters(["EVENTS"]),
   },
-  methods: {},
+  methods: {
+    handleDateClick(arg) {
+      console.log(arg);
+      this.$store.commit("ADD_EVENT", {
+        title: "Something",
+        start: arg.start,
+        end: arg.end,
+        allDay: arg.allDay,
+      });
+    },
+  },
 };
 </script>
 
