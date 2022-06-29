@@ -12,18 +12,7 @@ export default new Vuex.Store({
   },
   mutations: {
     addEvent: (state, event) => {
-      state.events.push(event)
-    },
-    updateEvent: (state, {
-      id,
-      title,
-      start,
-      end
-    }) => {
-      let index = state.events.findIndex(_event.id == id)
-      state.events[index].title = title;
-      state.events[index].start = start;
-      state.events[index].end = end;
+      return state.events.push(event)
     },
   },
   actions: {},

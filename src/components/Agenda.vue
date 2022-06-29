@@ -41,6 +41,7 @@ export default {
         dayMaxEvents: true,
         event: this.events,
         dateClick: this.handleDateClick,
+        // eventClick: this.handleDateClick,
       },
     };
   },
@@ -55,6 +56,7 @@ export default {
       console.log(arg);
       /* Get event data in store */
       console.log(this.$store.state.events);
+
       this.$store.commit("addEvent", {
         id: new Date().getTime(),
         title: "Some event",
