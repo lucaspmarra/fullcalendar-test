@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Fullcalendar :options="calendarPlugins" :header="headerToolbar" />
+    <Fullcalendar :options="calendarPlugins" :header="headerToolbar">
+      <template #eventContent="{ timeText, event }">
+        <b>{{ timeText }}</b>
+        <i>{{ event.title }}</i>
+      </template>
+    </Fullcalendar>
   </div>
 </template>
 
@@ -11,7 +16,8 @@ import TimeGridPlugin from "@fullcalendar/timegrid";
 import InteractionPlugin from "@fullcalendar/interaction";
 import ListPlugin from "@fullcalendar/list";
 
-import EventModal from "./EventModal.vue";
+// import EventModal from "./EventModal.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Agenda",
@@ -28,25 +34,23 @@ export default {
         selectable: true,
         selectMirror: true,
         editable: true,
-        // events: this.eventsComputed,
+        dayMaxEvents: true,
+        event: this.events,
         dateClick: this.handleDateClick,
       },
     };
   },
   components: { Fullcalendar },
   computed: {
-    getEvents() {
-      console.log(this.$store.state.events);
-      return this.$store.state.events;
-    },
+    ...mapGetters(["events"]),
   },
   methods: {
     handleDateClick(arg) {
       console.log(arg);
-      this.$modal.show(EventModal, {
+      /*   this.$modal.show(EventModal, {
         text: "This is from the component",
-      });
-      this.$store.commit("ADD_EVENT", {
+      }); */
+      this.$store.commit("addEvent", {
         id: new Date().getTime(),
         title: "Some event",
         start: arg.dateStr,
