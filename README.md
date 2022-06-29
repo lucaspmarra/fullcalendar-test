@@ -1,4 +1,4 @@
-# onesight-test
+# fullcalendar-test
 
 ## Project setup
 ```
