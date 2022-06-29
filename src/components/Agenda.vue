@@ -1,5 +1,6 @@
 <template>
   <div class="container pt-5 pb-2">
+    <h3 class="text-center">Events Calendar</h3>
     <div class="card mx-auto">
       <div class="card-body shadow">
         <Fullcalendar :options="calendarPlugins" :header="headerToolbar">
