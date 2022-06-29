@@ -14,12 +14,16 @@ export default {
 };
 </script>
 <style>
-#app {
+html,
+body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
+  background-color: #f1f4f6;
+}
+#app {
+  background-color: #f1f4f6;
 }
 
 #nav {
@@ -34,4 +38,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>

@@ -12,7 +12,7 @@ export default new Vuex.Store({
   },
   mutations: {
     addEvent: (state, event) => {
-      return state.events.push(event)
+      state.events.push(event)
     },
     updateEvent: (state, {
       id,
