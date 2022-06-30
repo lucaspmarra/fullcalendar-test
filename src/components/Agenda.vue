@@ -117,7 +117,7 @@ export default {
 }
 @media only screen and (max-width: 600px) {
   .card {
-    width: 400px;
+    width: 350px;
   }
   .fc .fc-button {
     display: flex;
