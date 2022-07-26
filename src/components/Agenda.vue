@@ -50,7 +50,7 @@ export default {
           selectMirror: true,
           editable: true,
           dayMaxEvents: true,
-          event: this.events,
+          events: this.events,
         };
       },
       eventHandlers() {
