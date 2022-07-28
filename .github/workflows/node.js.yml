@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: "14.15.1"
       - run: yarn
-      - run: yarn start
+      - run: yarn build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
