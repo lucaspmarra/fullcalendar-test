@@ -11,8 +11,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "14.15.1"
-      - run: yarn install
-      - run: yarn build
+      - run: yarn
+      - run: yarn start
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
